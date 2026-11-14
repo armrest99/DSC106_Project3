@@ -154,7 +154,7 @@
       const trackPoints = modelTracks().flatMap(track => track.values[index] ? [{ ...track.values[index], key: track.key }] : []);
       focus.selectAll('.individual-dot').data(trackPoints).join('rect').attr('class', 'individual-dot')
         .attr('x', x(2015.5 + index * 10) - 3).attr('y', d => y(d.value) - 3)
-        .attr('width', 6).attr('height', 6).attr('fill', d => byId.get(d.scenario).color).attr('stroke', '#f8f6ef');
+        .attr('width', 6).attr('height', 6).attr('fill', d => byId.get(d.scenario).color).attr('stroke', '#ffffff');
       focus.selectAll('.prediction-case-label').data(prediction.revealed ? trackPoints : []).join('text')
         .attr('class', 'prediction-case-label').attr('x', x(2015.5 + index * 10) + 8)
         .attr('y', d => y(d.value) + 4).text(d => d.key.toUpperCase());

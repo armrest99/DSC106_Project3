@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&display=swap");
 
 :root {
-  --hero: #102b23;
-  --forest: #17392f;
-  --paper: #f1ede4;
-  --chart: #f8f6ef;
-  --ink: #19231c;
-  --muted: #a4b6ad;
-  --lime: #d4ef59;
+  --hero: #000000;
+  --forest: #111111;
+  --paper: #ffffff;
+  --chart: #ffffff;
+  --ink: #111111;
+  --muted: #b3b3b3;
+  --lime: #ffffff;
   --serif: "DM Serif Display", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
   color-scheme: dark;
@@ -25,7 +25,7 @@ html {
 body {
   margin: 0;
   background: var(--hero);
-  color: #f9f8f2;
+  color: #ffffff;
   font: 16px/1.6 var(--sans);
 }
 
@@ -52,7 +52,7 @@ summary:focus-visible {
 }
 
 .cream a:focus-visible {
-  outline-color: #607523;
+  outline-color: #6b6b6b;
 }
 
 .wrap {
@@ -93,13 +93,13 @@ h2 {
 }
 
 .muted {
-  color: #8ba298;
+  color: #9c9c9c;
 }
 
 .hero-shell {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 85% 40%, #79904414, transparent 43%), radial-gradient(ellipse at 6% 80%, #2c5d4525, transparent 40%), var(--hero);
+  background: radial-gradient(ellipse at 85% 40%, #86868614, transparent 43%), radial-gradient(ellipse at 6% 80%, #51515125, transparent 40%), var(--hero);
 }
 
 .hero-shell:after {
@@ -107,11 +107,11 @@ h2 {
   position: absolute;
   width: 710px;
   height: 710px;
-  border: 1px solid #d4ef5912;
+  border: 1px solid #ffffff12;
   border-radius: 50%;
   right: -255px;
   top: 122px;
-  box-shadow: 0 0 0 100px #a1b56204, 0 0 0 200px #a1b56204;
+  box-shadow: 0 0 0 100px #ababab04, 0 0 0 200px #ababab04;
   pointer-events: none;
 }
 
@@ -137,7 +137,7 @@ nav {
 }
 
 nav a {
-  color: #b2c1b8;
+  color: #bdbdbd;
   text-decoration: none;
   font-size: 15px;
 }
@@ -174,7 +174,7 @@ nav a:hover {
   font-size: 22px;
   line-height: 1.55;
   max-width: 780px;
-  color: #b4c4ba;
+  color: #c0c0c0;
   margin-bottom: 46px;
 }
 
@@ -183,14 +183,14 @@ nav a:hover {
   align-items: center;
   gap: 20px;
   font-size: 16px;
-  color: #b4c4ba;
+  color: #c0c0c0;
   text-decoration: none;
   padding-bottom: 8px;
   border-bottom: 1px solid #ffffff30;
 }
 
 .explore-link span {
-  color: #92a93e;
+  color: #9c9c9c;
   font-size: 23px;
 }
 
@@ -207,7 +207,7 @@ nav a:hover {
 }
 
 .section-label {
-  color: #626c61;
+  color: #696969;
   padding-top: 8px;
 }
 
@@ -225,7 +225,7 @@ nav a:hover {
 .question-section p:not(.eyebrow) {
   font-size: 20px;
   line-height: 1.55;
-  color: #5d685e;
+  color: #656565;
   max-width: 940px;
   margin-bottom: 0;
 }
@@ -250,16 +250,16 @@ nav a:hover {
 
 .subtitle {
   font-size: 18px;
-  color: #9bb2a7;
+  color: #acacac;
   margin-bottom: 0;
 }
 
 .reset-button {
-  border: 1px solid #6d877961;
+  border: 1px solid #80808061;
   border-radius: 30px;
   padding: 13px 21px;
   background: transparent;
-  color: #f9f8f2;
+  color: #ffffff;
   margin-bottom: 0;
   white-space: nowrap;
   font-size: 17px;
@@ -289,7 +289,7 @@ legend {
   padding: 0;
   font-size: 13px;
   letter-spacing: .07em;
-  color: #95ab9f;
+  color: #a5a5a5;
   margin-bottom: 15px;
 }
 
@@ -309,7 +309,7 @@ legend {
   padding: 10px 15px;
   font-size: 14px;
   line-height: 1.5;
-  color: #f9f8f2;
+  color: #ffffff;
   transition: opacity .15s, background .15s;
 }
 
@@ -319,7 +319,7 @@ legend {
 
 .scenario-button[aria-pressed=false] {
   opacity: .45;
-  border-color: #6a8879;
+  border-color: #818181;
   background: transparent;
 }
 
@@ -335,7 +335,7 @@ legend {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #bccbc2;
+  color: #c7c7c7;
   font-size: 14px;
   white-space: nowrap;
   padding-bottom: 4px;
@@ -352,7 +352,7 @@ legend {
   margin: 0;
   position: relative;
   background: var(--chart);
-  color: #596559;
+  color: #626262;
   border-radius: 22px;
   overflow: hidden;
   color-scheme: light;
@@ -366,14 +366,14 @@ legend {
   align-items: center;
   gap: 11px;
   font-size: 12px;
-  color: #75645e;
+  color: #676767;
   z-index: 1;
   pointer-events: none;
 }
 
 .chart-reference span {
   width: 22px;
-  border-top: 1px dashed #ad6861;
+  border-top: 1px dashed #767676;
 }
 
 #chart svg {
@@ -392,29 +392,29 @@ legend {
 }
 
 .grid line {
-  stroke: #deded6;
+  stroke: #dddddd;
   stroke-opacity: .75;
 }
 
 .grid text,
 .axis text {
   font-size: 12px;
-  fill: #596559;
+  fill: #626262;
 }
 
 .axis line,
 .axis .domain {
-  stroke: #d3d5cc;
+  stroke: #d4d4d4;
 }
 
 .threshold {
-  stroke: #a66c65;
+  stroke: #787878;
   stroke-width: 1;
   stroke-dasharray: 3 5;
 }
 
 .threshold-label {
-  fill: #8d5c55;
+  fill: #666666;
   font-size: 12px;
   font-weight: 700;
   paint-order: stroke;
@@ -423,7 +423,7 @@ legend {
 }
 
 .focus-line {
-  stroke: #b8c2b6;
+  stroke: #bfbfbf;
   stroke-width: 1;
 }
 
@@ -449,7 +449,7 @@ legend {
 }
 
 .model-trace-label {
-  fill: #4a5f4e;
+  fill: #595959;
   font-size: 12px;
 }
 
@@ -466,7 +466,7 @@ legend {
 .decade-control label {
   font-size: 13px;
   font-weight: 700;
-  color: #92a69b;
+  color: #a1a1a1;
   letter-spacing: .12em;
 }
 
@@ -489,7 +489,7 @@ legend {
 .slider-ends {
   display: flex;
   justify-content: space-between;
-  color: #789487;
+  color: #8d8d8d;
   font-size: 12px;
 }
 
@@ -502,14 +502,14 @@ legend {
 
 .insight-card {
   background: var(--lime);
-  color: #1c2c17;
+  color: #111111;
   border-radius: 22px;
   padding: 31px 32px;
   min-height: 425px;
 }
 
 .insight-card .eyebrow {
-  color: #657723;
+  color: #6d6d6d;
   margin-bottom: 25px;
 }
 
@@ -524,7 +524,7 @@ legend {
 .prediction-challenge {
   margin-top: 24px;
   padding-top: 16px;
-  border-top: 1px solid #1c2c1740;
+  border-top: 1px solid #11111140;
   color-scheme: light;
 }
 
@@ -551,7 +551,7 @@ legend {
 
 .prediction-options legend {
   margin-bottom: 12px;
-  color: #243a1b;
+  color: #333333;
   font-size: 14px;
   font-weight: 650;
   line-height: 1.5;
@@ -564,15 +564,15 @@ legend {
   gap: 10px;
   padding: 11px 12px;
   margin-bottom: 9px;
-  border: 1px solid #1c2c1740;
+  border: 1px solid #11111140;
   border-radius: 8px;
   cursor: pointer;
   font-size: 13px;
 }
 
 .prediction-option:has(input:checked) {
-  border-color: #17392f;
-  background: #ffffff25;
+  border-color: #111111;
+  background: #f0f0f0;
 }
 
 .prediction-option input {
@@ -580,7 +580,7 @@ legend {
   height: 16px;
   flex: none;
   margin: 3px 0 0;
-  accent-color: #17392f;
+  accent-color: #111111;
 }
 
 .prediction-option strong,
@@ -589,7 +589,7 @@ legend {
 }
 
 .prediction-option small {
-  color: #425b27;
+  color: #525252;
   font-size: 12px;
 }
 
@@ -602,10 +602,10 @@ legend {
 
 .prediction-actions button {
   padding: 10px 12px;
-  border: 1px solid #17392f;
+  border: 1px solid #111111;
   border-radius: 7px;
-  background: #17392f;
-  color: #f9f8f2;
+  background: #111111;
+  color: #ffffff;
   font-size: 12px;
 }
 
@@ -615,12 +615,12 @@ legend {
 }
 
 .prediction-actions #prediction-exit {
-  color: #17392f;
+  color: #111111;
   background: transparent;
 }
 
 .prediction-challenge :focus-visible {
-  outline: 3px solid #17392f;
+  outline: 3px solid #111111;
   outline-offset: 3px;
 }
 
@@ -639,7 +639,7 @@ legend {
 }
 
 #prediction-next {
-  color: #425b27;
+  color: #525252;
   font-size: 12px;
 }
 
@@ -653,7 +653,7 @@ legend {
 }
 
 .prediction-case-label {
-  fill: #17392f;
+  fill: #111111;
   font-size: 12px;
   font-weight: 700;
   paint-order: stroke;
@@ -688,7 +688,7 @@ legend {
 
 .ensemble-heading>p {
   font-size: 12px;
-  color: #8ba598;
+  color: #9f9f9f;
   margin: 6px 0 0;
   white-space: nowrap;
 }
@@ -697,7 +697,7 @@ legend {
   overflow: auto;
   max-height: 250px;
   scrollbar-width: thin;
-  scrollbar-color: #547364 transparent;
+  scrollbar-color: #6b6b6b transparent;
 }
 
 #model-table {
@@ -719,7 +719,7 @@ legend {
 #model-table thead {
   position: sticky;
   top: 0;
-  background: #244438;
+  background: #222222;
   z-index: 1;
 }
 
@@ -731,7 +731,7 @@ legend {
 #model-table td {
   padding: 7px 9px;
   border-bottom: 1px solid #ffffff08;
-  color: #bacbbf;
+  color: #c7c7c7;
 }
 
 #model-table td:first-child {
@@ -747,7 +747,7 @@ legend {
   display: block;
   width: 100%;
   text-align: left;
-  color: #e4e9e0;
+  color: #e7e7e7;
   background: none;
   border: 0;
   padding: 7px 8px 7px 0;
@@ -760,7 +760,7 @@ legend {
 
 .model-help {
   font-size: 11px;
-  color: #9cb3a5;
+  color: #adadad;
   line-height: 1.5;
   margin: 17px 0 0;
 }
@@ -782,7 +782,7 @@ legend {
 
 .scenario-card .scenario-name {
   font-size: 12px;
-  color: #97aea1;
+  color: #a8a8a8;
   margin-bottom: 8px;
 }
 
@@ -795,7 +795,7 @@ legend {
 
 .scenario-card .scenario-range {
   font-size: 11px;
-  color: #8ba598;
+  color: #9f9f9f;
   margin: 0;
 }
 
@@ -816,12 +816,12 @@ legend {
 }
 
 .reading-grid article {
-  border-top: 1px solid #c9c8bc;
+  border-top: 1px solid #c7c7c7;
   padding-top: 30px;
 }
 
 .reading-grid .eyebrow {
-  color: #648174;
+  color: #7a7a7a;
   font-size: 12px;
   margin-bottom: 36px;
 }
@@ -835,13 +835,13 @@ legend {
 .reading-grid p:last-child {
   font-size: 16px;
   line-height: 1.6;
-  color: #5b675d;
+  color: #646464;
   margin: 0;
 }
 
 .method-section {
   padding-block: 115px 100px;
-  background: #102c23;
+  background: #111111;
 }
 
 .method-layout {
@@ -857,7 +857,7 @@ legend {
 }
 
 .method-content>p {
-  color: #acc0b2;
+  color: #bbbbbb;
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 19px;
@@ -887,7 +887,7 @@ legend {
 .data-facts dt {
   font-size: 12px;
   letter-spacing: .04em;
-  color: #769487;
+  color: #8d8d8d;
 }
 
 .data-facts dd {
@@ -910,13 +910,13 @@ legend {
   margin-top: 30px;
   border-top: 1px solid #ffffff1b;
   font-size: 13px;
-  color: #acc0b2;
+  color: #bbbbbb;
 }
 
 .technical-details summary {
   cursor: pointer;
   padding: 16px 0;
-  color: #c1d0c5;
+  color: #cccccc;
 }
 
 .technical-details p {
@@ -933,14 +933,14 @@ legend {
 }
 
 .writeup-content {
-  border-top: 1px solid #cccabc;
+  border-top: 1px solid #c9c9c9;
   padding-top: 25px;
 }
 
 .draft-label {
   font-size: 11px;
   letter-spacing: .08em;
-  color: #6e704e;
+  color: #6d6d6d;
   margin-bottom: 30px;
 }
 
@@ -950,7 +950,7 @@ legend {
 }
 
 .writeup-content article p {
-  color: #5c685e;
+  color: #656565;
   font-size: 16px;
 }
 
@@ -969,7 +969,7 @@ legend {
 .site-footer>p,
 .site-footer>a:last-child {
   font-size: 12px;
-  color: #96afa0;
+  color: #a9a9a9;
   margin: 0;
 }
 
@@ -1005,8 +1005,8 @@ legend {
   z-index: 2;
   max-width: 260px;
   padding: 11px 15px;
-  background: #10271ff5;
-  color: #f8f8f0;
+  background: #111111f5;
+  color: #ffffff;
   border-radius: 8px;
   pointer-events: none;
   font-size: 12px;
@@ -1565,7 +1565,7 @@ legend {
   }
 
   .hero h1 em {
-    color: #526619;
+    color: #5c5c5c;
   }
 
   .intro,
@@ -1598,7 +1598,7 @@ legend {
   }
 
   .insight-card {
-    background: #ecf6bf;
+    background: #eeeeee;
   }
 
   .scenario-card,
