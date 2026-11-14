@@ -1,0 +1,17 @@
+tmp/
+node_modules/
+__pycache__/
+*.log
+.venv-data/
+
+# Local analysis and reference material; excluded from the submission.
+/README.md
+/DATA_AND_TOOL_AUDIT.md
+/Project*.pdf
+/tests/
+/scripts/
+/data/raw/
+/data/provenance/
+/data/source_catalog.csv
+/data/source_manifest.json
+/data/cloud_validation.json

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore five CMIP6 warming pathways, their model ranges, and when emissions choices begin to separate our climate futures.">
+  <meta name="theme-color" content="#102b23">
+  <title>Five futures. One warming world. · CMIP6 / 2100</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/d3.v7.min.js"></script>
+  <script defer src="climate-core.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#explorer">Skip to the interactive explorer</a>
+  <div class="hero-shell">
+    <header class="site-header wrap">
+      <a class="brand" href="#">CMIP6 / 2100</a>
+      <nav aria-label="Main navigation"><a href="#explorer">Explorer</a><a href="#method">Method</a><a href="#writeup">Write-up</a></nav>
+    </header>
+    <section class="hero wrap" aria-labelledby="page-title">
+      <p class="eyebrow accent">AN INTERACTIVE CLIMATE FUTURES ATLAS</p>
+      <h1 id="page-title">Five futures.<em>One warming<br>world.</em></h1>
+      <p class="intro">Climate models do not predict a single future. They show a range of possible worlds—and how sharply those worlds diverge when emissions choices compound over time.</p>
+      <a class="explore-link" href="#explorer">Explore the pathways <span aria-hidden="true">↓</span></a>
+    </section>
+  </div>
+  <main>
+    <section class="question-section cream" aria-labelledby="question-title">
+      <div class="wrap editorial-row"><p class="eyebrow section-label">01 / THE QUESTION</p><div>
+        <h2 id="question-title">When do emissions choices begin to meaningfully separate our climate futures?</h2>
+        <p>Each line below summarizes the same nine global climate models. The line is the ensemble median; its translucent envelope spans the 10th to 90th percentile. Select scenarios and move through decades to see both the shared near-term warming and the growing long-term uncertainty.</p>
+      </div></div>
+    </section>
+    <section id="explorer" class="explorer-section" aria-labelledby="explorer-title">
+      <div class="wrap">
+        <p class="eyebrow muted">02 / INTERACTIVE EXPLORER</p>
+        <div class="explorer-heading"><div><h2 id="explorer-title">Global surface temperature<br> anomaly</h2><p class="subtitle">Decadal global mean relative to the 1850–1900 average · °C</p></div><button id="reset" class="reset-button" hidden>Reset view</button></div>
+        <div id="explorer-app" aria-busy="true">
+          <p id="load-status" role="status">Loading the CMIP6 model archive…</p>
+          <div class="app-controls" hidden><fieldset><legend>COMPARE PATHWAYS</legend><div id="scenario-buttons" class="scenario-buttons"></div></fieldset><label class="range-toggle"><input type="checkbox" id="show-range" checked>Show model range</label></div>
+          <figure class="chart-figure" aria-label="Interactive CMIP6 temperature pathways" hidden>
+            <div class="chart-reference"><span aria-hidden="true"></span>1.5°C / 2°C warming references</div>
+            <div id="chart"></div><div id="chart-tooltip" role="tooltip" hidden></div>
+            <figcaption class="sr-only" id="chart-caption">Lines show model medians and bands show the 10th-90th percentiles. Hover to preview a decade, click to keep it, or use the focus decade slider. Select pathways using the buttons above.</figcaption>
+          </figure>
+          <div class="decade-control" hidden><div><label for="decade">FOCUS DECADE</label><output id="decade-value" for="decade">2041–2050</output></div><input id="decade" type="range" min="0" max="8" step="1" value="3" aria-describedby="slider-help"><div class="slider-ends"><span>2011–20</span><span id="slider-help" class="sr-only">Use the left and right arrow keys to move one decade.</span><span>2091–2100</span></div></div>
+          <div class="ensemble-row" hidden>
+            <aside class="insight-card">
+              <p class="eyebrow" id="insight-heading">WHAT THE MODELS SHOW</p>
+              <p id="insight-text"></p>
+              <details class="prediction-challenge" id="prediction-challenge">
+                <summary id="prediction-summary">Predict, then reveal <span aria-hidden="true">↗</span></summary>
+                <p class="prediction-intro">Two models, two emissions choices. Make a prediction before checking the end-century values.</p>
+                <fieldset id="prediction-options" class="prediction-options">
+                  <legend>Which case projects more warming in <span id="prediction-period">2091–2100</span>?</legend>
+                  <label class="prediction-option">
+                    <input type="radio" name="warming-prediction" value="a">
+                    <span><strong id="prediction-a-model">A · CanESM5</strong><small id="prediction-a-path">SSP1–1.9 · Very low emissions</small></span>
+                  </label>
+                  <label class="prediction-option">
+                    <input type="radio" name="warming-prediction" value="b">
+                    <span><strong id="prediction-b-model">B · GFDL-ESM4</strong><small id="prediction-b-path">SSP5–8.5 · Very high emissions</small></span>
+                  </label>
+                </fieldset>
+                <div id="prediction-result" class="prediction-result" role="status" aria-atomic="true" hidden>
+                  <p id="prediction-verdict"></p>
+                  <p id="prediction-values"></p>
+                  <p id="prediction-takeaway"></p>
+                  <p id="prediction-next"></p>
+                </div>
+                <div class="prediction-actions">
+                  <button type="button" id="prediction-reveal" disabled>Reveal comparison</button>
+                  <button type="button" id="prediction-exit" hidden>Back to explorer</button>
+                </div>
+              </details>
+            </aside>
+            <section class="ensemble-panel" aria-labelledby="ensemble-title"><div class="ensemble-heading"><div><p class="eyebrow muted">INSIDE THE ENSEMBLE</p><h3 id="ensemble-title">Models in <span id="model-period">2041–2050</span></h3></div><p>Inspect a model on the chart</p></div>
+              <div class="model-table-scroll"><table id="model-table"><caption class="sr-only">Individual model temperatures for the selected pathways and focus decade. Hover, focus, or select a model to highlight its trajectories in the main chart.</caption><thead></thead><tbody></tbody></table></div>
+              <p id="model-help" class="model-help">Hover or focus a model to inspect its dashed trajectories above. Click to pin; click again to clear.</p>
+            </section>
+          </div>
+          <div id="scenario-cards" class="scenario-cards" hidden></div>
+          <p id="action-status" class="sr-only" role="status"></p>
+        </div>
+      </div>
+    </section>
+    <section class="reading-section cream" aria-labelledby="reading-title"><div class="wrap editorial-row"><p class="eyebrow section-label">03 / READING THE CHART</p><div><h2 id="reading-title">The near future is shared.<br>The late century is chosen.</h2><div class="reading-grid">
+      <article><p class="eyebrow">A</p><h3>Near-term inertia</h3><p>Through the 2030s, the scenario medians remain close. Past emissions and the climate system's delayed response make some additional warming common to every pathway.</p></article>
+      <article><p class="eyebrow">B</p><h3>A widening fork</h3><p>After mid-century, pathways separate rapidly. Under SSP1-1.9 the ensemble median levels off; under SSP5-8.5 it continues climbing.</p></article>
+      <article><p class="eyebrow">C</p><h3>Uncertainty is not ignorance</h3><p>Models disagree on the exact amount of warming, but by late century the differences between scenarios are larger than much of the within-scenario model spread.</p></article>
+    </div></div></div></section>
+    <section id="method" class="method-section" aria-labelledby="method-title"><div class="wrap method-layout"><div><p class="eyebrow muted">04 / METHOD & DATA</p><h2 id="method-title">From <span id="model-count">9</span><br>models to a<br>legible range</h2></div><div class="method-content">
+      <p>We read monthly near-surface air temperature (<code>tas</code>) and matching grid-cell areas (<code>areacella</code>) from the CMIP6 Google Cloud catalog linked in the course example. We compute area-weighted global means, weight months by the days in each model’s calendar, and subtract each model's historical 1850-1900 mean.</p>
+      <p>This visualization uses the same nine-model subset in all five pathways, with one matching ensemble member per model. Historical values through 2014 and scenario values from 2015 onward form nine non-overlapping decades, 2011–2020 through 2091–2100. Lines and bands show the median and 10th/90th percentiles. No models are selected by their warming outcomes, and no outliers are trimmed.</p>
+      <dl class="data-facts"><div><dt>VARIABLE</dt><dd>Global mean surface air temperature anomaly</dd></div><div><dt>SCENARIOS</dt><dd>SSP1-1.9, SSP1-2.6, SSP2-4.5, SSP3-7.0, SSP5-8.5</dd></div><div><dt>UNIT</dt><dd>°C above 1850–1900 mean</dd></div><div><dt>MODELS</dt><dd id="model-sample-count">The same 9 models per scenario</dd></div></dl>
+      <p class="source-line">Source: CMIP6 public simulation data on Google Cloud, accessed through the course-provided example. <a href="https://console.cloud.google.com/marketplace/product/noaa-public/cmip6">Course dataset ↗</a></p>
+      <details class="technical-details"><summary>Data files, definitions & limitations</summary><div><p>The nine models are CNRM-ESM2-1, CanESM5, EC-Earth3-Veg-LR, GFDL-ESM4, GISS-E2-1-G, IPSL-CM6A-LR, MIROC-ES2L, MRI-ESM2-0, and UKESM1-0-LL. This is a computationally bounded subset from nine institutions, selected for matching historical/future member and grid coverage, complete required years, supplied grid-cell areas, and atmospheric grids with at most 60,000 cells. One lower-resolution model per institution is retained. It is not the full CMIP6 ensemble.</p><p>Global monthly means use the supplied cell areas, with valid cells renormalized. Months are weighted by days in each model's calendar; annual means receive equal weight in the 51-year baseline and ten-year periods. Baselines use the same model/member as each future trajectory. The central 80% range uses linearly interpolated 10th and 90th percentiles (R-7), with equal weight per model. Straight lines join decade centers; they are not annual estimates. No missing annual values are interpolated.</p><p>These unweighted, unassessed model ensembles are not an IPCC forecast. With nine models, the bands provide a limited description of this subset, not an 80% probability of future warming or a confidence interval. Scenarios are conditional pathways, not equally likely outcomes. Related models are not independent. The two reference levels provide context; a ten-year simulation average does not establish a formal long-term warming-target assessment.</p><p><a href="https://github.com/dsc-courses/dsc106-2025-fa/blob/main/lectures/climate-lecture/CMIP%20basic_search_and_load-colab.ipynb">Course data-access example</a> · <a href="data/climate.json" download>Visualization data</a> · <a href="data/DATA_SOURCES.md">Model citations and source licenses</a>.</p><p>We acknowledge WCRP’s coordination of CMIP6, the nine modeling institutions that produced these simulations, ESGF's archive and access services, Google Cloud's public CMIP6 archive, and the course authors' access example. Source dataset identifiers, attribution, and original license declarations are recorded in the linked source documentation.</p></div></details>
+    </div></div></section>
+    <section id="writeup" class="writeup-section cream"><div class="wrap editorial-row"><p class="eyebrow section-label">05 / PROJECT WRITE-UP</p><div><h2>Behind the visualization</h2><div class="writeup-content">
+      <article>
+        <h3>Design rationale</h3>
+        <p>Our visualization asks when emissions choices begin to meaningfully separate our climate futures. We focused on global temperature over time so readers could compare the shared near-term warming with the larger differences that emerge later in the century. We also wanted readers to see the variation among models within each pathway, since a difference between two central estimates does not tell the whole story.</p>
+        <p>We chose a line chart because the shape and spacing of the trajectories make changes over time easy to compare. Time runs horizontally and warming runs vertically, allowing direct comparisons using position on shared axes. Each solid line shows the ensemble median, while a translucent band shows the 10th-90th percentile range. The median summarizes the center of the models without being as sensitive to extreme values as the mean. The bands keep model spread visible; they are descriptive ranges, not confidence intervals or probabilities.</p>
+        <p>The transformations support that comparison. Area weighting makes each grid cell contribute according to its actual size, and calendar-day weighting accounts for different month lengths. Subtracting each model's 1850-1900 baseline puts warming on a common reference. Ten-year averages reduce year-to-year variation so the longer-term trajectories are easier to follow. We use the same nine-model subset across all five pathways to keep differences in model membership from changing the comparison. This is a limited subset, rather than a summary of every available CMIP6 model.</p>
+        <p>We kept consistent scenario colors throughout the lines, buttons, table headings, and summary cards. Teal and blue identify lower-emissions pathways, while orange and red identify higher-emissions pathways. Labels identify the scenarios alongside color. The cream plotting area separates the data from the dark green page, and the lime insight panel draws attention to the selected decade's comparison. The 1.5°C and 2°C reference lines provide context without treating a decadal value as a formal assessment of a warming target.</p>
+        <p>The interactions let readers move from an overview to specific comparisons. All five pathways appear initially, and the toggle buttons let readers isolate closely spaced scenarios or reduce overlapping bands. The decade slider and chart hover update the focus markers, model values, summary cards, and calculated median spread. Readers can then inspect or pin one model to overlay its dashed trajectories on the same chart. This reveals individual behavior hidden by the ensemble summaries, such as whether a model remains relatively warm across pathways or how its outcomes change under different emissions choices. Showing every model simultaneously would make those comparisons difficult to follow.</p>
+        <p>The predict-then-reveal challenge asks readers to compare CanESM5 under SSP1-1.9 with GFDL-ESM4 under SSP5-8.5 before seeing their end-century values. Revealing the answer highlights both individual trajectories on the existing chart. Readers can then move the slider backward to discover that their ordering changes over time. This connects a prediction to an explanation and makes the distinction between model variation and emissions choices concrete. The comparison uses actual values from the selected model runs; it is not a probability statement or a result for every model pair.</p>
+        <p><strong>Alternatives:</strong> Bars could compare values within a single decade, but would make the trajectories harder to trace. A map would be useful for a regional question; our question concerns global means. A chart of every individual model would expose variation but create substantial overlap. Limiting the initial view to two scenarios would reduce clutter, but would hide the five-pathway overview, so we retained all five with filtering. Our checkpoint also included a separate model-dot plot. In response to the feedback to focus on one interactive graphic, we replaced that plot with a model-value table that controls overlays on the main chart. This keeps the model details and all visual exploration connected to the same research question.</p>
+      </article>
+      <article>
+        <h3>Development process</h3>
+        <p>We split the work across exploratory data analysis, investigating patterns and possible research questions, and developing the visualization and webpage. This allowed team members to become familiar with the dataset and narrow the focus while work on the interactive chart and page progressed in parallel. The analysis informed which comparisons and controls were most useful for the final visualization.</p>
+        <p>The project took approximately 15-18 people-hours in total across research, analysis, and implementation. Data analysis took the largest share of the time, especially understanding the dataset, exploring patterns, and deciding which research question to pursue. Development then focused on connecting those findings to the scenario filters, decade selection, model inspection, and accompanying explanations.</p>
+      </article>
+    </div></div></div></section>
+  </main>
+  <footer class="wrap site-footer"><a class="brand" href="#">CMIP6 / 2100</a><p>DSC 106 · Interactive Visualization</p><a href="https://github.com/armrest99/DSC106_Project3">Source on GitHub ↗</a></footer>
+  <noscript><p class="noscript">Enable JavaScript to use the explorer. The method and <a href="data/climate.json">visualization data</a> remain available.</p></noscript>
+</body>
+</html>
